@@ -12,6 +12,12 @@ def y_function():
  }
  ```
  
- Zobacz instrukcję Markdown:
-[Markdown instrukcja - zobacz!] 
+Zobacz instrukcję Markdown:
+[Markdown instrukcja - zobacz!]https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf
+
+- [x] 1 zadanie zrobione
+- [ ] 2 zdanie niewykonane
+- [x] 3 wykonano
+- [x] 4 wykonano 
+
 
