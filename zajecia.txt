@@ -1,0 +1,421 @@
+tester@tester-m:~$ pwd
+/home/tester
+tester@tester-m:~$ ls
+Desktop    Music        nano.save  Public      skrypt.sh   Videos
+Documents  myfile2.txt  Pictures   python      skrypt.txt
+Downloads  myfile.txt   polska     skrypt2.sh  Templates
+tester@tester-m:~$ cd Desktop
+tester@tester-m:~/Desktop$ ls
+git_training
+tester@tester-m:~/Desktop$ cd git_training/
+tester@tester-m:~/Desktop/git_training$ ls -a
+.  ..  .git
+tester@tester-m:~/Desktop/git_training$ git --version
+git version 2.17.1
+tester@tester-m:~/Desktop/git_training$ git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+tester@tester-m:~/Desktop/git_training$ ls --all
+.  ..  .git
+tester@tester-m:~/Desktop/git_training$ cd .git
+tester@tester-m:~/Desktop/git_training/.git$ ls
+branches  config  description  HEAD  hooks  info  objects  refs
+tester@tester-m:~/Desktop/git_training/.git$ cd ..
+tester@tester-m:~/Desktop/git_training$ touch jezyki.txt
+tester@tester-m:~/Desktop/git_training$ cat jezyki.txt 
+Python
+tester@tester-m:~/Desktop/git_training$ clear
+tester@tester-m:~/Desktop/git_training$ pwd
+/home/tester/Desktop/git_training
+tester@tester-m:~/Desktop/git_training$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	jezyki.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+tester@tester-m:~/Desktop/git_training$ echo  Java>jezyki.txt
+tester@tester-m:~/Desktop/git_training$ cat jezyki.txt 
+Java
+tester@tester-m:~/Desktop/git_training$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	jezyki.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+tester@tester-m:~/Desktop/git_training$ echo pyhton>jezyki.txt
+tester@tester-m:~/Desktop/git_training$ cat jezyki.txt 
+pyhton
+tester@tester-m:~/Desktop/git_training$ git has-object jezyki.txt
+git: 'has-object' is not a git command. See 'git --help'.
+
+The most similar command is
+	hash-object
+tester@tester-m:~/Desktop/git_training$ git hash-object jezyki.txt
+43f4c4dba9d8fc66c36123f586e7fc9f7b352973
+tester@tester-m:~/Desktop/git_training$ echo  Java>jezyki.txt
+tester@tester-m:~/Desktop/git_training$ git hash-object jezyki.txt
+bf4484b6c312ac452d17552f86ce1c61afee09e2
+tester@tester-m:~/Desktop/git_training$ echo pyhton>jezyki.txt
+tester@tester-m:~/Desktop/git_training$ git hash-object jezyki.txt
+43f4c4dba9d8fc66c36123f586e7fc9f7b352973
+tester@tester-m:~/Desktop/git_training$ git config
+usage: git config [<options>]
+
+Config file location
+    --global              use global config file
+    --system              use system config file
+    --local               use repository config file
+    -f, --file <file>     use given config file
+    --blob <blob-id>      read config from given blob object
+
+Action
+    --get                 get value: name [value-regex]
+    --get-all             get all values: key [value-regex]
+    --get-regexp          get values for regexp: name-regex [value-regex]
+    --get-urlmatch        get value specific for the URL: section[.var] URL
+    --replace-all         replace all matching variables: name value [value_regex]
+    --add                 add a new variable: name value
+    --unset               remove a variable: name [value-regex]
+    --unset-all           remove all matches: name [value-regex]
+    --rename-section      rename section: old-name new-name
+    --remove-section      remove a section: name
+    -l, --list            list all
+    -e, --edit            open an editor
+    --get-color           find the color configured: slot [default]
+    --get-colorbool       find the color setting: slot [stdout-is-tty]
+
+Type
+    --bool                value is "true" or "false"
+    --int                 value is decimal number
+    --bool-or-int         value is --bool or --int
+    --path                value is a path (file or directory name)
+    --expiry-date         value is an expiry date
+
+Other
+    -z, --null            terminate values with NUL byte
+    --name-only           show variable names only
+    --includes            respect include directives on lookup
+    --show-origin         show origin of config (file, standard input, blob, command line)
+
+tester@tester-m:~/Desktop/git_training$ git config --global user.name "Asiolinek"
+tester@tester-m:~/Desktop/git_training$ git config --global user.email "joanna.krupicz@gmail.com"
+tester@tester-m:~/Desktop/git_training$ cat ~/.gitconfig
+[user]
+	name = Asiolinek
+	email = joanna.krupicz@gmail.com
+tester@tester-m:~/Desktop/git_training$ git config --list
+user.name=Asiolinek
+user.email=joanna.krupicz@gmail.com
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+tester@tester-m:~/Desktop/git_training$ git add jezyki.txt
+tester@tester-m:~/Desktop/git_training$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   jezyki.txt
+
+tester@tester-m:~/Desktop/git_training$ cat jezyki.txt 
+JavaPython
+tester@tester-m:~/Desktop/git_training$ git commit -m "Initial commit"
+[master (root-commit) c1abfdf] Initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 jezyki.txt
+tester@tester-m:~/Desktop/git_training$ git log
+commit c1abfdf1103c3e721b198b759f879d6346813363 (HEAD -> master)
+Author: Asiolinek <joanna.krupicz@gmail.com>
+Date:   Sun Dec 8 11:28:37 2019 +0100
+
+    Initial commit
+tester@tester-m:~/Desktop/git_training$ git log --oneline
+c1abfdf (HEAD -> master) Initial commit
+tester@tester-m:~/Desktop/git_training$ git show ^C
+tester@tester-m:~/Desktop/git_training$ git show c1abfdf
+commit c1abfdf1103c3e721b198b759f879d6346813363 (HEAD -> master)
+Author: Asiolinek <joanna.krupicz@gmail.com>
+Date:   Sun Dec 8 11:28:37 2019 +0100
+
+    Initial commit
+
+diff --git a/jezyki.txt b/jezyki.txt
+new file mode 100644
+index 0000000..43f4c4d
+--- /dev/null
++++ b/jezyki.txt
+@@ -0,0 +1 @@
++pyhton
+tester@tester-m:~/Desktop/git_training$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   jezyki.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+tester@tester-m:~/Desktop/git_training$ git add .
+tester@tester-m:~/Desktop/git_training$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   jezyki.txt
+
+tester@tester-m:~/Desktop/git_training$ git commit -m "Changed version of Python"
+[master 4149a15] Changed version of Python
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+tester@tester-m:~/Desktop/git_training$ git log
+commit 4149a155c6bab9ef114391f6fe68a7b3e3e76650 (HEAD -> master)
+Author: Asiolinek <joanna.krupicz@gmail.com>
+Date:   Sun Dec 8 11:36:03 2019 +0100
+
+    Changed version of Python
+
+commit c1abfdf1103c3e721b198b759f879d6346813363
+Author: Asiolinek <joanna.krupicz@gmail.com>
+Date:   Sun Dec 8 11:28:37 2019 +0100
+
+    Initial commit
+tester@tester-m:~/Desktop/git_training$ git log --oneline
+4149a15 (HEAD -> master) Changed version of Python
+c1abfdf Initial commit
+tester@tester-m:~/Desktop/git_training$ git show c1abfdf
+commit c1abfdf1103c3e721b198b759f879d6346813363
+Author: Asiolinek <joanna.krupicz@gmail.com>
+Date:   Sun Dec 8 11:28:37 2019 +0100
+
+    Initial commit
+
+diff --git a/jezyki.txt b/jezyki.txt
+new file mode 100644
+index 0000000..43f4c4d
+--- /dev/null
++++ b/jezyki.txt
+@@ -0,0 +1 @@
++pyhton
+tester@tester-m:~/Desktop/git_training$ git show 4149a15
+commit 4149a155c6bab9ef114391f6fe68a7b3e3e76650 (HEAD -> master)
+Author: Asiolinek <joanna.krupicz@gmail.com>
+Date:   Sun Dec 8 11:36:03 2019 +0100
+
+    Changed version of Python
+
+diff --git a/jezyki.txt b/jezyki.txt
+index 43f4c4d..9fbaa2f 100644
+--- a/jezyki.txt
++++ b/jezyki.txt
+@@ -1 +1 @@
+-pyhton
++JavaPython
+tester@tester-m:~/Desktop/git_training$ git push
+fatal: No configured push destination.
+Either specify the URL from the command-line or configure a remote repository using
+
+    git remote add <name> <url>
+
+and then push using the remote name
+
+    git push <name>
+
+tester@tester-m:~/Desktop/git_training$ git remote add origin https://github.com/Asiolinek/git_training.git
+tester@tester-m:~/Desktop/git_training$ git remote show origin
+* remote origin
+  Fetch URL: https://github.com/Asiolinek/git_training.git
+  Push  URL: https://github.com/Asiolinek/git_training.git
+  HEAD branch: (unknown)
+tester@tester-m:~/Desktop/git_training$ git push -u origin master 
+Username for 'https://github.com': Asiolinek
+Password for 'https://Asiolinek@github.com': 
+Counting objects: 6, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (6/6), 467 bytes | 233.00 KiB/s, done.
+Total 6 (delta 0), reused 0 (delta 0)
+To https://github.com/Asiolinek/git_training.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+tester@tester-m:~/Desktop/git_training$ git pull 
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/Asiolinek/git_training
+   4149a15..cb4305b  master     -> origin/master
+Updating 4149a15..cb4305b
+Fast-forward
+ README.md | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+ create mode 100644 README.md
+tester@tester-m:~/Desktop/git_training$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+tester@tester-m:~/Desktop/git_training$ git add README.md 
+tester@tester-m:~/Desktop/git_training$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   README.md
+
+tester@tester-m:~/Desktop/git_training$ git commit -m "Tasks added to the file"
+[master b0eafdb] Tasks added to the file
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+tester@tester-m:~/Desktop/git_training$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+tester@tester-m:~/Desktop/git_training$ git push
+Username for 'https://github.com': Asiolinek
+Password for 'https://Asiolinek@github.com': 
+Counting objects: 3, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 449 bytes | 449.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/Asiolinek/git_training.git
+   cb4305b..b0eafdb  master -> master
+tester@tester-m:~/Desktop/git_training$ git rm jezyki.txt
+rm 'jezyki.txt'
+tester@tester-m:~/Desktop/git_training$ git push
+Username for 'https://github.com': Asiolinek
+Password for 'https://Asiolinek@github.com': 
+Everything up-to-date
+tester@tester-m:~/Desktop/git_training$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	deleted:    jezyki.txt
+
+tester@tester-m:~/Desktop/git_training$ git push
+Username for 'https://github.com': Asiolinek
+Password for 'https://Asiolinek@github.com': 
+Everything up-to-date
+tester@tester-m:~/Desktop/git_training$ git commit -m "File delition"
+[master 24fd647] File delition
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 jezyki.txt
+tester@tester-m:~/Desktop/git_training$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+tester@tester-m:~/Desktop/git_training$ git push
+Username for 'https://github.com': Asiolinek
+Password for 'https://Asiolinek@github.com': 
+Counting objects: 2, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (1/1), done.
+Writing objects: 100% (2/2), 238 bytes | 238.00 KiB/s, done.
+Total 2 (delta 0), reused 0 (delta 0)
+To https://github.com/Asiolinek/git_training.git
+   b0eafdb..24fd647  master -> master
+tester@tester-m:~/Desktop/git_training$ gitg
+
+(gitg:15459): GLib-GIO-CRITICAL **: 13:08:43.789: g_converter_convert: assertion 'outbuf_size > 0' failed
+
+** (gitg:15459): WARNING **: 13:08:43.789: gitg-resource.vala:33: Error while loading resource: style-unix.css:1:0Failed to import: The resource at “/org/gnome/gitg/ui/style-unix.css” failed to decompress
+tester@tester-m:~/Desktop/git_training$ git log --oneline
+24fd647 (HEAD -> master, origin/master) File delition
+b0eafdb Tasks added to the file
+cb4305b Create README.md
+4149a15 Changed version of Python
+c1abfdf Initial commit
+tester@tester-m:~/Desktop/git_training$ git checkout 24fd647
+Note: checking out '24fd647'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+HEAD is now at 24fd647 File delition
+tester@tester-m:~/Desktop/git_training$ git checkout b0eafdb
+Previous HEAD position was 24fd647 File delition
+HEAD is now at b0eafdb Tasks added to the file
+tester@tester-m:~/Desktop/git_training$ git status
+HEAD detached at b0eafdb
+nothing to commit, working tree clean
+tester@tester-m:~/Desktop/git_training$ ^C
+tester@tester-m:~/Desktop/git_training$ pwd
+/home/tester/Desktop/git_training
+tester@tester-m:~/Desktop/git_training$ touch zajecia.txt
+tester@tester-m:~/Desktop/git_training$ git add zajecia.txt 
+tester@tester-m:~/Desktop/git_training$ git commit -m "Initial commit"
+[detached HEAD a1219d2] Initial commit
+ 1 file changed, 381 insertions(+)
+ create mode 100644 zajecia.txt
+tester@tester-m:~/Desktop/git_training$ git push
+fatal: You are not currently on a branch.
+To push the history leading to the current (detached HEAD)
+state now, use
+
+    git push origin HEAD:<name-of-remote-branch>
+
+tester@tester-m:~/Desktop/git_training$ git status
+HEAD detached from b0eafdb
+nothing to commit, working tree clean
+tester@tester-m:~/Desktop/git_training$ git push -u origin master
+Username for 'https://github.com': Asiolinek
+Password for 'https://Asiolinek@github.com': 
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+Everything up-to-date
+tester@tester-m:~/Desktop/git_training$ git status
+HEAD detached from b0eafdb
+nothing to commit, working tree clean
+tester@tester-m:~/Desktop/git_training$ git checkout master
+Warning: you are leaving 1 commit behind, not connected to
+any of your branches:
+
+  a1219d2 Initial commit
+
+If you want to keep it by creating a new branch, this may be a good time
+to do so with:
+
+ git branch <new-branch-name> a1219d2
+
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+tester@tester-m:~/Desktop/git_training$ touch zajecia.txt
+tester@tester-m:~/Desktop/git_training$ 
+
